@@ -68,16 +68,6 @@ namespace Vector
             return c;
         }
 
-        public static double ScalarProduct(Vector a, Vector b)
-        {
-            if (a.Rank != b.Rank) throw new Exception("The rank is different operation impossible to proceed");
-            double product=0;
-            for(int i=0; i<a.Rank; i++)
-            {
-                product += a[i]*b[i];
-            }
-            return product;
-        }
     }
 
 }

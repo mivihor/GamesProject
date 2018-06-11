@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vector", "Vector\Vector.csproj", "{A3314C6F-B5E6-44C5-A96B-4385A3A90BDA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NG", "NG\NG.csproj", "{9FB44274-22CC-4667-81C2-B3D7A485EFB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A3314C6F-B5E6-44C5-A96B-4385A3A90BDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A3314C6F-B5E6-44C5-A96B-4385A3A90BDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A3314C6F-B5E6-44C5-A96B-4385A3A90BDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A3314C6F-B5E6-44C5-A96B-4385A3A90BDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FB44274-22CC-4667-81C2-B3D7A485EFB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FB44274-22CC-4667-81C2-B3D7A485EFB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FB44274-22CC-4667-81C2-B3D7A485EFB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FB44274-22CC-4667-81C2-B3D7A485EFB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {6BF20208-3825-4136-BD5D-35B80DABEC71}
+		SolutionGuid = {2C40F78F-B3B0-4549-9CD7-098AD1BF22D1}
 	EndGlobalSection
 EndGlobal

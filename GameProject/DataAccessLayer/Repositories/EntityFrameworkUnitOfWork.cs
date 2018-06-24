@@ -9,7 +9,7 @@ namespace Z_DataAccessLayer.Repositories
 {
     public class EntityFrameworkUnitOfWork : IUnitOfWork
     {
-        private DataContext db;
+        private DataContext db = new DataContext();
         private UserRepository userRepository;
         private HighScoreRepository highScoreRepository;
 

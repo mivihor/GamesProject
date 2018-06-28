@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GamesProject", "GamesProject\GamesProject.csproj", "{DA995514-D90D-49D0-84F4-11ACA3217A25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GamesProject", "GamesProject\GamesProject.csproj", "{DA995514-D90D-49D0-84F4-11ACA3217A25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GamesProject.DataAccessLayer", "GamesProject.DataAccessLayer\GamesProject.DataAccessLayer.csproj", "{BD9C4C85-5C60-4052-BE0F-D4D731368DEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GamesProject.DataAccessLayer", "GamesProject.DataAccessLayer\GamesProject.DataAccessLayer.csproj", "{BD9C4C85-5C60-4052-BE0F-D4D731368DEA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GamesProject.BusinessLogicLayer", "GamesProject.BusinessLogicLayer\GamesProject.BusinessLogicLayer.csproj", "{0AE3D8C8-1E11-4614-834D-26EE64CA8395}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{BD9C4C85-5C60-4052-BE0F-D4D731368DEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD9C4C85-5C60-4052-BE0F-D4D731368DEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD9C4C85-5C60-4052-BE0F-D4D731368DEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AE3D8C8-1E11-4614-834D-26EE64CA8395}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AE3D8C8-1E11-4614-834D-26EE64CA8395}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AE3D8C8-1E11-4614-834D-26EE64CA8395}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AE3D8C8-1E11-4614-834D-26EE64CA8395}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

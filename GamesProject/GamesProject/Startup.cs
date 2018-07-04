@@ -12,8 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using GamesProject.DataAccessLayer.EntitiFramework;
-
-
+using AutoMapper;
 
 namespace GamesProject
 {
@@ -30,6 +29,7 @@ namespace GamesProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

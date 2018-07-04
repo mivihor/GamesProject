@@ -6,11 +6,11 @@ namespace GamesProject.BusinessLogicLayer.DataTransferModels
 {
     public class UserDTM
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public string Role { get; set; }
+        public int IdDTM { get; set; }
+        public string NameDTM { get; set; }
+        public string SurnameDTM { get; set; }
+        public string LoginDTM { get; set; }
+        public string PasswordDTM { get; set; }
+        public string RoleDTM { get; set; }
     }
 }

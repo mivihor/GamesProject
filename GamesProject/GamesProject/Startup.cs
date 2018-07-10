@@ -20,12 +20,13 @@ using GamesProject.Models;
 using GamesProject.DataAccessLayer.Interfaces;
 using GamesProject.DataAccessLayer.Repositories;
 using Microsoft.Extensions.Logging;
-using NLog.Config;
+using System.IO;
 
 namespace GamesProject
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -36,6 +37,9 @@ namespace GamesProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            string connectionString = Configuration.GetSection("ConnectionStrings")["DatabaseAccess"];
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer(options =>
                     {
@@ -55,21 +59,24 @@ namespace GamesProject
                             ValidateIssuerSigningKey = true,
                         };
                     });
+
             
-            services.AddMvc(options =>
-            {
-                options.Filters.Add(typeof(ApiExceptionFilter));
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddScoped<IUnitOfWork, EntityFrameworkUnitOfWork>();
+
             services.AddAutoMapper();
             }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseAuthentication();
             app.UseDefaultFiles();
             app.UseStaticFiles();
-
-            app.UseAuthentication();
             app.UseMvc();
         }
     }

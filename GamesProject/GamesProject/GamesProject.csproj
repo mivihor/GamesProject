@@ -14,14 +14,18 @@
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0" />
-    <PackageReference Include="NLog" Version="4.5.6" />
-    <PackageReference Include="NLog.Config" Version="4.5.6" />
     <PackageReference Include="SonarAnalyzer.CSharp" Version="7.3.0.5690" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\GamesProject.BusinessLogicLayer\GamesProject.BusinessLogicLayer.csproj" />
     <ProjectReference Include="..\GamesProject.DataAccessLayer\GamesProject.DataAccessLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="C:\Users\IM\.nuget\packages\nlog.config\4.5.6\contentFiles\any\any\NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

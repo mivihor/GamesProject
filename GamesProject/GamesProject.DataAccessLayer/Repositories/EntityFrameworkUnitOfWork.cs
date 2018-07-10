@@ -11,17 +11,21 @@ namespace GamesProject.DataAccessLayer.Repositories
 {
     public class EntityFrameworkUnitOfWork:IUnitOfWork
     {
-        private DataContext db = new DataContext();
+        private DataContext _db;
         private UserRepository userRepository;
         private HighScoreRepository highScoreRepository;
 
-
+        public EntityFrameworkUnitOfWork(DataContext db)
+        {
+            _db = db;
+        }
+        
         public IRepository<User> Users
         {
             get
             {
                 if (userRepository == null)
-                    userRepository = new UserRepository(db);
+                    userRepository = new UserRepository(_db);
                 return userRepository;
             }
         }
@@ -31,12 +35,12 @@ namespace GamesProject.DataAccessLayer.Repositories
             get
             {
                 if (highScoreRepository == null)
-                    highScoreRepository = new HighScoreRepository(db);
+                    highScoreRepository = new HighScoreRepository(_db);
                 return highScoreRepository;
             }
         }
 
-        public DataContext Db { get => db; set => db = value; }
+        public DataContext Db { get => _db; set => _db = value; }
 
         public void Save()
         {

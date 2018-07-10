@@ -5,7 +5,7 @@ using GamesProject.BusinessLogicLayer.DataTransferModels;
 
 namespace GamesProject.BusinessLogicLayer.Interfaces
 {
-    interface IUserService
+    public interface IUserService
     {
         bool ifUserExist(UserDTM userDTM);
         void CreateUser(UserDTM userDTM);

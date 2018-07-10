@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using GamesProject.DataAccessLayer.Entities;
 using GamesProject.DataAccessLayer.EntitiFramework;
 using GamesProject.DataAccessLayer.Repositories;
+using GamesProject.DataAccessLayer.Interfaces;
 
 namespace GamesProject.Controllers
 {
@@ -13,11 +14,18 @@ namespace GamesProject.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly IUnitOfWork _db;
+        public ValuesController(IUnitOfWork db)
+        {
+            _db = db;
+        }
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1","value2" };
+            _db.Users.Create(new User() { Login = "shark", Name = "igor", Surname = "mykula", Password="b10b10f3e2" });
+            _db.Save();
+            return Ok();
         }
 
         // GET api/values/5

@@ -7,6 +7,9 @@ using GamesProject.DataAccessLayer.Entities;
 using GamesProject.DataAccessLayer.EntitiFramework;
 using GamesProject.DataAccessLayer.Repositories;
 using GamesProject.DataAccessLayer.Interfaces;
+using Newtonsoft.Json;
+using GamesProject.BusinessLogicLayer.Interfaces;
+using GamesProject.BusinessLogicLayer.DataTransferModels;
 
 namespace GamesProject.Controllers
 {
@@ -14,19 +17,35 @@ namespace GamesProject.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private readonly IUnitOfWork _db;
-        public ValuesController(IUnitOfWork db)
+        //private IUnitOfWork _db;
+        private IUserService _userService;
+        public ValuesController(IUserService userService)
         {
-            _db = db;
+            //_db = db;
+            _userService = userService;
         }
-        // GET api/values
+
+
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<string> Create()
         {
-            _db.Users.Create(new User() { Login = "shark", Name = "igor", Surname = "mykula", Password="b10b10f3e2" });
-            _db.Save();
-            return Ok();
+            UserDTM user = new UserDTM() { LoginDTM = "SH@RK", NameDTM = "Igor", SurnameDTM = "Mykula", PasswordDTM = "MyHashPassword", RoleDTM = "Admin" };
+            _userService.CreateUser(user);
+            return Ok(user.LoginDTM);
         }
+
+        // GET api/values
+        //[HttpPost]
+        // public ActionResult<IEnumerable<string>> Get()
+        // {
+        //     _db.Users.Create(new User() { Login = "shark", Name = "igor", Surname = "mykula", Password = "b10b10f3e2" });
+        //     _db.Save();
+        //     return Ok();
+        // }
+        // public JsonResult GetAll()
+        // {
+        //     return new JsonResult(_db.Users.GetAll().ToList<User>());
+        // }
 
         // GET api/values/5
         [HttpGet("{id}")]
@@ -36,10 +55,10 @@ namespace GamesProject.Controllers
         }
 
         // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+        //[HttpPost]
+        //public void Post([FromBody] string value)
+        //{
+        //}
 
         // PUT api/values/5
         [HttpPut("{id}")]

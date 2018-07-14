@@ -19,8 +19,8 @@ using Microsoft.IdentityModel.Tokens;
 using GamesProject.Models;
 using GamesProject.DataAccessLayer.Interfaces;
 using GamesProject.DataAccessLayer.Repositories;
-using Microsoft.Extensions.Logging;
-using System.IO;
+using GamesProject.BusinessLogicLayer.Interfaces;
+using GamesProject.BusinessLogicLayer.Service;
 
 namespace GamesProject
 {
@@ -40,25 +40,25 @@ namespace GamesProject
 
             string connectionString = Configuration.GetSection("ConnectionStrings")["DatabaseAccess"];
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                    .AddJwtBearer(options =>
-                    {
-                        options.RequireHttpsMetadata = false;
-                        options.TokenValidationParameters = new TokenValidationParameters
-                        {
+            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //        .AddJwtBearer(options =>
+            //        {
+            //            options.RequireHttpsMetadata = false;
+            //            options.TokenValidationParameters = new TokenValidationParameters
+            //            {
                             
-                            ValidateIssuer = true,
-                            ValidIssuer = AuthOptions.ISSUER,
+            //                ValidateIssuer = true,
+            //                ValidIssuer = AuthOptions.ISSUER,
 
-                            ValidateAudience = true,
-                            ValidAudience = AuthOptions.AUDIENCE,
+            //                ValidateAudience = true,
+            //                ValidAudience = AuthOptions.AUDIENCE,
 
-                            ValidateLifetime = true,
+            //                ValidateLifetime = true,
 
-                            IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
-                            ValidateIssuerSigningKey = true,
-                        };
-                    });
+            //                IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
+            //                ValidateIssuerSigningKey = true,
+            //            };
+            //        });
 
             
 
@@ -67,6 +67,7 @@ namespace GamesProject
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddScoped<IUnitOfWork, EntityFrameworkUnitOfWork>();
+            services.AddScoped<IUserService, UserService>();
 
             services.AddAutoMapper();
             }
@@ -74,7 +75,8 @@ namespace GamesProject
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseAuthentication();
+            //app.UseAuthentication();
+            app.UseStatusCodePages();
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseMvc();

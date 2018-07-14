@@ -9,7 +9,7 @@ namespace GamesProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AccountController : ControllerBase
+    public class AuthController : ControllerBase
     {
     }
 }

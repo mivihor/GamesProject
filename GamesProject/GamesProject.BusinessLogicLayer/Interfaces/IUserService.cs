@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using GamesProject.BusinessLogicLayer.DataTransferModels;
-using Microsoft.AspNetCore.Identity;
 
 namespace GamesProject.BusinessLogicLayer.Interfaces
 {
@@ -10,6 +10,7 @@ namespace GamesProject.BusinessLogicLayer.Interfaces
     {
         bool ifUserExist(UserDTM userDTM);
         void CreateUser(UserDTM userDTM);
+        Task<UserDTM> GetUserByLogin(string login);
         UserDTM GetUser(int? id);
         IEnumerable<UserDTM> GetUsers();
         void Dispose();

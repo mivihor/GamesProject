@@ -8,29 +8,37 @@ using GamesProject.DataAccessLayer.Interfaces;
 using GamesProject.DataAccessLayer.Entities;
 using AutoMapper;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace GamesProject.BusinessLogicLayer.Service
 {
     public class UserService : IUserService
     {
         private IUnitOfWork _DataBase { get; set; }
-        private PasswordsInfrastructure PasswordsInfrastructure;
 
         public UserService(IUnitOfWork DataBase)
         {
             _DataBase = DataBase;
-            this.PasswordsInfrastructure = new PasswordsInfrastructure();
         }
 
         public bool ifUserExist(UserDTM userDTM)
         {
-            IEnumerable<User> users =_DataBase.Users.Find(m => m.Login == userDTM.LoginDTM);
-            var userCheck = users.ToList();
-            if (userCheck.Count == 0) return false;
-            return true;
+                IEnumerable<User> users = _DataBase.Users.Find(m => m.Login == userDTM.LoginDTM);
+                var userCheck = users.ToList();
+                if (userCheck.Count == 0) return false;
+                return true;
         }
 
-        public void CreateUser(UserDTM userDTM)
+        public bool ifUserExist(string login)
+        {
+            
+                IEnumerable<User> users = _DataBase.Users.Find(m => m.Login == login);
+                var userCheck = users.ToList();
+                if (userCheck.Count == 0) return false;
+                return true;
+        }
+
+        public async void CreateUser(UserDTM userDTM)
         {
             if (userDTM == null)
                 throw new ValidationException("User is null", "");
@@ -42,7 +50,7 @@ namespace GamesProject.BusinessLogicLayer.Service
                 Name = userDTM.NameDTM,
                 Surname = userDTM.SurnameDTM,
                 Login = userDTM.LoginDTM,
-                Password = PasswordsInfrastructure.HashPassword(userDTM, userDTM.PasswordDTM),
+                Password = userDTM.PasswordDTM,
                 Role = userDTM.RoleDTM
             };
 
@@ -54,6 +62,31 @@ namespace GamesProject.BusinessLogicLayer.Service
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDTM>()).CreateMapper();
             return mapper.Map<IEnumerable<User>, List<UserDTM>>(_DataBase.Users.GetAll());
+        }
+
+        public async Task<UserDTM> GetUserByLogin(string login)
+        {
+            return await Task.Run(() =>
+            {
+                if (login == string.Empty)
+                    throw new ValidationException("Login not provided", "");
+
+                IEnumerable<User> userEnum = _DataBase.Users.Find(userfromDB => userfromDB.Login == login);
+                var user = userEnum.First<User>();
+
+                if (user == null)
+                    throw new ValidationException($"User with login {login} not exist", "");
+
+
+                return new UserDTM
+                {
+                    NameDTM = user.Name,
+                    SurnameDTM = user.Surname,
+                    LoginDTM = user.Login,
+                    PasswordDTM = user.Password,
+                    RoleDTM = user.Role
+                };
+            });
         }
 
         public UserDTM GetUser(int? id)

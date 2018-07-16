@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 using GamesProject.DataAccessLayer.Entities;
 
@@ -13,10 +14,5 @@ namespace GamesProject.BusinessLogicLayer.DataTransferModels
         public string LoginDTM { get; set; }
         public string PasswordDTM { get; set; }
         public string RoleDTM { get; set; }
-
-        public static implicit operator UserDTM(User v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

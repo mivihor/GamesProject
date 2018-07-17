@@ -13,7 +13,7 @@ namespace GamesProject.Utils
 {
     public class TokenIssuer
     {
-        private IConfiguration _config;
+        private readonly IConfiguration _config;
         public TokenIssuer(IConfiguration config)
         {
             _config = config;

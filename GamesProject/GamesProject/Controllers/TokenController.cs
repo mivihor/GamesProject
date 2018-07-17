@@ -13,9 +13,9 @@ using GamesProject.Utils;
 
 namespace GamesProject.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
     [ApiController]
-    public class TokenController : ControllerBase
+    public class TokenController : Controller
     {
         private readonly IConfiguration _config;
         private IUserService _userService;
@@ -28,7 +28,7 @@ namespace GamesProject.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost("api/auth")]
         public async Task<IActionResult> CreateToken([FromBody] LoginModel loginModel)
         {
             try

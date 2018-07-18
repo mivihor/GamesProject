@@ -30,8 +30,7 @@ namespace GamesProject.BusinessLogicLayer.Service
         }
 
         public bool ifUserExist(string login)
-        {
-            
+        {            
                 IEnumerable<User> users = _DataBase.Users.Find(m => m.Login == login);
                 var userCheck = users.ToList();
                 if (userCheck.Count == 0) return false;
@@ -42,8 +41,6 @@ namespace GamesProject.BusinessLogicLayer.Service
         {
             if (userDTM == null)
                 throw new ValidationException("User is null", "");
-            if (ifUserExist(userDTM))
-                throw new ValidationException("Unable to create user, user already exist", "");
 
             User user = new User
             {

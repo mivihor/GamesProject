@@ -9,6 +9,7 @@ using GamesProject.BusinessLogicLayer.DataTransferModels;
 using GamesProject.Models;
 using Microsoft.AspNetCore.Identity;
 using GamesProject.Utils;
+using System.ComponentModel.DataAnnotations;
 
 namespace GamesProject.Controllers
 {
@@ -24,8 +25,8 @@ namespace GamesProject.Controllers
             _hasher = hasher;
         }
 
-        [HttpPost("/create")]
-        public async Task<IActionResult> CreateUser([FromBody] UserCreationModel userCM )
+        [HttpPost("/api/create")]
+        public async Task<IActionResult> CreateUser([FromBody] UserCreationModel userCM)
         {
             if (ModelState.IsValid)
             {
@@ -33,9 +34,11 @@ namespace GamesProject.Controllers
                 {
                     UserCreationNormalization normalization = new UserCreationNormalization(_hasher);
                     UserDTM user = normalization.Normalize(userCM);
+                    if (_userService.ifUserExist(user))
+                        return StatusCode(406, $"User with login {user.LoginDTM} already exist");
                     _userService.CreateUser(user);
-                    return Ok("User has been sucessfully created");
-                }
+                    return StatusCode(201);
+}
                 catch (Exception ex)
                 {
                     throw new Exception("Something goes wrong!");

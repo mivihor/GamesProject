@@ -1,0 +1,26 @@
+<!-- Start of Main block-->
+<div class="mainStyle">
+    <table class="registrationTable">
+        <tr>
+        <th colspan="2" class="thStyle">Sign In</th>
+        <th></th>
+        <tr>
+            <tr>
+                <td>Login:</td>
+                <td><input class="regInput"  type="text" name="Login" [(ngModel)]='user.Login'><td>
+            </tr>
+                    <tr>
+                            <td>Password:</td>
+                            <td><input class="regInput"  type="password" name="Password" value="" [(ngModel)]='user.Password'><td>
+                        </tr>
+                        <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    <button type="button" class="regSubmit" (click)='Submit(user)'>Submit</button>&nbsp;
+                                    <td>
+                            </tr>
+    </table>
+
+</div>
+{{Login}}{{Password}}

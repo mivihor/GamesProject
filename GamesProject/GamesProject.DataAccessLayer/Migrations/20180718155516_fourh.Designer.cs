@@ -3,14 +3,16 @@ using GamesProject.DataAccessLayer.EntitiFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GamesProject.DataAccessLayer.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180718155516_fourh")]
+    partial class fourh
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,7 +32,7 @@ namespace GamesProject.DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HScoresShellGame");
+                    b.ToTable("HScores");
                 });
 
             modelBuilder.Entity("GamesProject.DataAccessLayer.Entities.User", b =>

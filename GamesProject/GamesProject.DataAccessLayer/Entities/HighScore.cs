@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GamesProject.DataAccessLayer.Entities
 {
-    public class HighScore
+    public class HighScoreShellGame
     {
         public int Id { get; set; }
         public int UserLogin { get; set; }

@@ -64,6 +64,8 @@ namespace GamesProject
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            services.AddCors();
+
             services.AddScoped<IUnitOfWork, EntityFrameworkUnitOfWork>();
 
             services.AddScoped<IUserService, UserService>();
@@ -79,6 +81,7 @@ namespace GamesProject
         {
             app.UseAuthentication();
             app.UseStatusCodePages();
+            app.UseCors(builder =>  builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod());
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseMvc();

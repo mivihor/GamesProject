@@ -9,45 +9,45 @@ using System.Linq;
 
 namespace GamesProject.DataAccessLayer.Repositories
 {
-    class HighScoreRepository:IRepository<HighScore>
+    class HighScoreShellGameRepository:IRepository<HighScoreShellGame>
     {
         private DataContext db;
 
-        public HighScoreRepository(DataContext context)
+        public HighScoreShellGameRepository(DataContext context)
         {
             this.db = context;
         }
 
-        public IEnumerable<HighScore> GetAll()
+        public IEnumerable<HighScoreShellGame> GetAll()
         {
-            return db.HScores;
+            return db.HScoresShellGame;
         }
 
-        public HighScore Get(int id)
+        public HighScoreShellGame Get(int id)
         {
-            return db.HScores.Find(id);
+            return db.HScoresShellGame.Find(id);
         }
 
-        public void Create(HighScore highScore)
+        public void Create(HighScoreShellGame highScore)
         {
-            db.HScores.Add(highScore);
+            db.HScoresShellGame.Add(highScore);
         }
 
-        public void Update(HighScore highScore)
+        public void Update(HighScoreShellGame highScore)
         {
             db.Entry(highScore).State = EntityState.Modified;
         }
 
-        public IEnumerable<HighScore> Find(Func<HighScore, Boolean> predicate)
+        public IEnumerable<HighScoreShellGame> Find(Func<HighScoreShellGame, Boolean> predicate)
         {
-            return db.HScores.Where(predicate).ToList();
+            return db.HScoresShellGame.Where(predicate).ToList();
         }
 
         public void Delete(int id)
         {
-            HighScore highScore = db.HScores.Find(id);
+            HighScoreShellGame highScore = db.HScoresShellGame.Find(id);
             if (highScore != null)
-                db.HScores.Remove(highScore);
+                db.HScoresShellGame.Remove(highScore);
         }
     }
 }

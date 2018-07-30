@@ -1,0 +1,68 @@
+.mainStyle{
+    margin-top:0.5%;
+    margin-bottom:0.5%;
+    display: flex;
+    position: flex;
+    background-color: black;
+    height: 100%;
+    width:100%;
+    border: 1px;
+    border-color:green;
+    border-top:solid;
+    color:green;
+    /* vertical-align: middle; */
+    /* justify-content: center;
+    align-items: center; */
+
+}
+
+.registrationTable{
+    position: flex;
+    font-family: 'OCR A';
+    font-size:20px;
+    /* align-self: center; */
+    padding-top: 10%;
+    padding-left: 40%;
+    
+}
+
+.thStyle{
+    border-color:green;
+    border-bottom:solid;
+    color:green;
+}
+
+.regInput{
+    background-color:black; 
+    border-style: solid;
+    border-width:2px;
+    border-color:green;
+    font-family: 'OCR A';
+    font-size:large;
+    color: green;
+}
+
+input:focus { 
+    outline: none;
+    border-color:green;
+    box-shadow: 0 0 10px #719ECE;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px black inset;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: green !important;
+}
+
+
+.regSubmit{
+    background-color: black; /* Green */
+    border: 2px;
+    border-style: solid;
+    color:green;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}

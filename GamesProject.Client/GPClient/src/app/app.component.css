@@ -1,0 +1,61 @@
+.MH {
+    background-color: black/*#ea990d*/ /*#0045cf*/;
+    float: none;
+    padding: 20px;
+    align-content: center;
+    font-size:small;
+    color:green;
+    line-height:3pt;
+    text-align: center;
+}
+
+.MHSUB1 {
+    display: flex;
+    background-color: black;
+    height: 50px;
+    
+    border-width: 1 px;
+    border-bottom:solid;
+    border-color: green;
+    overflow:hidden;
+}
+a{
+    text-decoration:none;
+
+}
+
+.hyperspan {
+    text-align:center;
+    vertical-align: middle;
+    line-height: 40px;
+    position: relative;
+    font-family: 'OCR A';
+    font-size: medium;
+    border: 2px;
+    border-style: solid;
+    border-color:green;
+    color:green;
+    width:180px;
+    height:40px;
+    left:0;
+    top:0;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    margin-bottom: 1%;
+    margin-top:2px;
+}
+
+.signSpan{
+    text-align:right;
+    vertical-align: middle;
+    font-size:smaller;
+    font-family: 'OCR A';
+    color:green;
+    text-decoration-line: none;
+}
+
+.signDiv{
+float:right;
+background-color: black;
+padding-right:2%;
+}

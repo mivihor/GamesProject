@@ -34,7 +34,7 @@ namespace GamesProject.Controllers
             try
             {
                 IActionResult response = Unauthorized();
-                var userDTM = await _userService.GetUserByLogin(loginModel.Login);
+               var userDTM = await _userService.GetUserByLogin(loginModel.Login);
                 
                 if(userDTM != null)
                 {

@@ -13,7 +13,7 @@ namespace GamesProject.DataAccessLayer.Repositories
     {
         private DataContext _db;
         private UserRepository userRepository;
-        private HighScoreRepository highScoreRepository;
+        private HighScoreShellGameRepository highScoreRepository;
 
         public EntityFrameworkUnitOfWork(DataContext db)
         {
@@ -30,12 +30,12 @@ namespace GamesProject.DataAccessLayer.Repositories
             }
         }
 
-        public IRepository<HighScore> HighScores
+        public IRepository<HighScoreShellGame> HighScores
         {
             get
             {
                 if (highScoreRepository == null)
-                    highScoreRepository = new HighScoreRepository(_db);
+                    highScoreRepository = new HighScoreShellGameRepository(_db);
                 return highScoreRepository;
             }
         }

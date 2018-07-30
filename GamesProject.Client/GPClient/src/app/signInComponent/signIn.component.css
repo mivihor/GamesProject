@@ -1,8 +1,8 @@
 .mainStyle{
     margin-top:0.5%;
     margin-bottom:0.5%;
-    display: flex;
-    position: flex;
+    display: relative;
+    position: relative;
     background-color: black;
     height: 100%;
     width:100%;
@@ -10,20 +10,41 @@
     border-color:green;
     border-top:solid;
     color:green;
-    /* vertical-align: middle; */
-    /* justify-content: center;
-    align-items: center; */
+    align-content: center;
 
 }
 
-.registrationTable{
-    position: flex;
+.tableDiv{
     font-family: 'OCR A';
     font-size:20px;
-    /* align-self: center; */
-    padding-top: 10%;
-    padding-left: 40%;
+    color:green;
+    align-content: center;
+    display: flex;
+    justify-content: center;
     
+}
+.registrationTable{
+    position: relative;
+    display: relative;
+    font-family: 'OCR A';
+    font-size:20px;
+    align-self: center;
+    vertical-align: top;
+    padding-top: 3%;
+    
+    
+}
+
+.redText{
+    font-family: 'OCR A';
+    font-size:20px;
+    color:red;
+    float: center;
+}
+
+.redPre{
+    text-align: center;
+    align-self: center;
 }
 
 .thStyle{

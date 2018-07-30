@@ -1,5 +1,12 @@
 <!-- Start of Main block-->
+
 <div class="mainStyle">
+        <div *ngIf="isLoginError" class="redText">
+                <pre class="redPre">ACCESS DENIED</pre>
+                <pre class="redPre">Login or Password is incorect</pre>
+            
+                </div>
+    <div class="tableDiv">
     <table class="registrationTable">
         <tr>
         <th colspan="2" class="thStyle">Sign In</th>
@@ -21,6 +28,6 @@
                                     <td>
                             </tr>
     </table>
-
 </div>
-{{Login}}{{Password}}
+</div>
+{{Login}}{{Password}}{{isLoginError}}

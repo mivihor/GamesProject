@@ -11,7 +11,7 @@ const httpOptions = {
     providedIn: 'root'
 })
 export class userService{
-    authUrl:string = 'https://localhost:44307/api/auth';
+    authUrl:string = 'https://localhost:44300/api/auth';
 
     constructor(private http: HttpClient){}
 

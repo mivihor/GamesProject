@@ -3,23 +3,38 @@ import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
 import { SignInComponent } from './signInComponent/signIn.component';
-import { HttpClient } from 'selenium-webdriver/http';
+import { AboutComponent } from './aboutComponent/about.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignInComponent
+    SignInComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    JwtModule.forRoot({
+      config:{
+        tokenGetter:() => {
+          return sessionStorage.getItem('userToken');
+        },
+    
+      whitelistedDomains: ['localhost:4200']
+      }
+    }),
     RouterModule.forRoot([
-      {path:'signin', component: SignInComponent}
+      {path:'about', component: AboutComponent},
+      {path:'signin', component: SignInComponent},
+      {path: '', redirectTo: 'about', pathMatch: 'full'},
+      {path: '**', redirectTo: 'about', pathMatch: 'full'}
     ])
   ],
   providers: [],

@@ -1,9 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div>
     <div class="signDiv">
-        <span class="signSpan">SIGN UP |</span>
-        <a routerLinkActive='active' [routerLink]="['/signin']"><span class="signSpan"> SIGN IN |</span></a>
-        <span class="signSpan"> SIGN OUT </span>
+        <span class="signSpan" *ngIf="!authchek">SIGN UP |</span>
+        <a routerLinkActive='active' [routerLink]="['/signin']"><span class="signSpan"> {{authchek?'SIGNED:'+userLogin:'SIGN IN'}}</span></a>
+        <a routerLinkActive='active' [routerLink]="['']" (click)='signOut()'><span class="signSpan" *ngIf="authchek">| SIGN OUT </span></a>
     </div>
 <div class="MH">
     
@@ -22,7 +22,7 @@
     <span class="hyperspan">GAMES LIST</span>
     <span class="hyperspan">HIGH SCORES</span>
     <span class="hyperspan">FAQ</span>
-    <span class="hyperspan">ABOUT</span>
+    <a class="aclass" routerLinkActive='active' [routerLink]="['/about']">ABOUT</a>
 </div>
 </div>
 <router-outlet></router-outlet>

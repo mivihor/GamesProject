@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import { userService } from "./user.service";
 import { userModel } from "./userModel";
 import { HttpErrorResponse } from "../../../node_modules/@angular/common/http";
-import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
+
 
 
 @Component({
@@ -12,6 +12,7 @@ import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
     styleUrls: ['./signIn.component.css']
 })
 export class SignInComponent{
+    
 user:userModel = new userModel();
 isLoginError:boolean = false;
 
@@ -22,7 +23,8 @@ Submit(ucred:userModel){
     //alert(`${ucred.Login}-----${ucred.Password}`);
     
     this.uservice.userAuth(ucred.Login,ucred.Password).subscribe((data:any)=>{
-        localStorage.setItem('userToken',data.token);    
+        sessionStorage.setItem('userToken',data.token);  
+        sessionStorage.setItem('userLogin',ucred.Login);  
         //router navigate ==> home
 },
     (err:HttpErrorResponse)=>{

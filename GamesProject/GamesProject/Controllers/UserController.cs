@@ -19,11 +19,13 @@ namespace GamesProject.Controllers
     {
         private IUserService _userService;
         private IPasswordHasher<UserDTM> _hasher;
-        public UserController(IUserService userService, IPasswordHasher<UserDTM> hasher)
+        private IShellHighScore _highScoreService;
+        public UserController(IUserService userService, IPasswordHasher<UserDTM> hasher, IShellHighScore highScoreService)
         {
             _userService = userService;
             _hasher = hasher;
-        }
+            _highScoreService = highScoreService;
+    }
 
         [HttpPost("/api/create")]
         public async Task<IActionResult> CreateUser([FromBody] UserCreationModel userCM)
@@ -33,10 +35,11 @@ namespace GamesProject.Controllers
                 try
                 {
                     UserCreationNormalization normalization = new UserCreationNormalization(_hasher);
-                    UserDTM user = normalization.Normalize(userCM);
+                    UserDTM user = await normalization.Normalize(userCM);
                     if (_userService.ifUserExist(user))
                         return StatusCode(406, $"User with login {user.LoginDTM} already exist");
                     _userService.CreateUser(user);
+                    _highScoreService.CreationScoreSetUp(user.LoginDTM);
                     return StatusCode(201);
 }
                 catch (Exception ex)

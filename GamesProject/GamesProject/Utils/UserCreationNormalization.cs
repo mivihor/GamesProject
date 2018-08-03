@@ -16,19 +16,47 @@ namespace GamesProject.Utils
             _hasher = hasher;
         }
 
-        public UserDTM Normalize(UserCreationModel userCM)
+        public async Task<UserDTM> Normalize(UserCreationModel userCM)
+        {
+            return await Task.Run(() =>
         {
             if (userCM == null)
                 throw new Exception("User can't be created");
 
             UserDTM user = new UserDTM();
-            user.LoginDTM = userCM.LoginUCM;
-            user.NameDTM = userCM.NameUCM;
-            user.SurnameDTM = userCM.SurnameUCM;
+            user.LoginDTM = LoginNormalization(userCM.LoginUCM);
+            user.NameDTM = NameSurnameNormalization(userCM.NameUCM);
+            user.SurnameDTM = NameSurnameNormalization(userCM.SurnameUCM);
             user.PasswordDTM = _hasher.HashPassword(user, userCM.PasswordUCM);
             user.RoleDTM = "User";
 
             return user;
+        });
         }
+
+        public string NameSurnameNormalization(string s)
+        {
+            var charsToRemove = new string[] { " ", "*", ".", "<", ">", "\\", "/", "\"", "\"", "@", "(", ")", "?" };
+            foreach (var c in charsToRemove)
+            {
+                s = s.Replace(c, string.Empty);
+            }
+
+            if (s.Length > 30) s = s.Substring(0, 30);
+            return s;
+        }
+
+        public string LoginNormalization(string s)
+        {
+            var charsToRemove = new string[] { " ", "*", ".", "<", ">", "\\", "/", "(", ")", "?" };
+            foreach (var c in charsToRemove)
+            {
+                s = s.Replace(c, string.Empty);
+            }
+
+            if (s.Length > 30) s = s.Substring(0, 30);
+            return s;
+        }
+
     }
 }

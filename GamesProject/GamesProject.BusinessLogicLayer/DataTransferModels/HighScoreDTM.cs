@@ -7,7 +7,7 @@ namespace GamesProject.BusinessLogicLayer.DataTransferModels
     public class HighScoreDTM
     {
         public int IdDTM { get; set; }
-        public int UserLogindDTM { get; set; }
+        public string UserLogindDTM { get; set; }
         public int ScoreDTM { get; set; }
     }
 }

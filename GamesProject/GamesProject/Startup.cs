@@ -68,6 +68,8 @@ namespace GamesProject
 
             services.AddScoped<IUnitOfWork, EntityFrameworkUnitOfWork>();
 
+            services.AddScoped<IShellHighScore, ShellHighScore>();
+
             services.AddScoped<IUserService, UserService>();
 
             var hasher = new PasswordHasher<UserDTM>();

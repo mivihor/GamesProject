@@ -1,9 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div>
     <div class="signDiv">
-        <span class="signSpan" *ngIf="!authchek">SIGN UP |</span>
+        <a routerLinkActive='active' [routerLink]="['/signup']"><span class="signSpan" *ngIf="!authchek">SIGN UP |</span></a>
         <a routerLinkActive='active' [routerLink]="['/signin']"><span class="signSpan"> {{authchek?'SIGNED:'+userLogin:'SIGN IN'}}</span></a>
-        <a routerLinkActive='active' [routerLink]="['']" (click)='signOut()'><span class="signSpan" *ngIf="authchek">| SIGN OUT </span></a>
+        <a routerLinkActive='active' [routerLink]="['']" (click)='signOut()'><span class="signSpan"  *ngIf="authchek">| SIGN OUT </span></a>
     </div>
 <div class="MH">
     

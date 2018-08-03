@@ -8,6 +8,8 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AppComponent } from './app.component';
 import { SignInComponent } from './signInComponent/signIn.component';
 import { AboutComponent } from './aboutComponent/about.component';
+import { SignUpComponent } from './signUpComponent/signUp.component';
+import { ShellGameComponent } from './shellGameComponent/shell-game.component';
 
 
 
@@ -15,7 +17,9 @@ import { AboutComponent } from './aboutComponent/about.component';
   declarations: [
     AppComponent,
     SignInComponent,
-    AboutComponent
+    AboutComponent,
+    SignUpComponent,
+    ShellGameComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +37,8 @@ import { AboutComponent } from './aboutComponent/about.component';
     RouterModule.forRoot([
       {path:'about', component: AboutComponent},
       {path:'signin', component: SignInComponent},
+      {path:'signup', component: SignUpComponent},
+      {path:'shell-game', component: ShellGameComponent},
       {path: '', redirectTo: 'about', pathMatch: 'full'},
       {path: '**', redirectTo: 'about', pathMatch: 'full'}
     ])

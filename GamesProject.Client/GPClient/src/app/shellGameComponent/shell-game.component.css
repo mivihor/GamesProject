@@ -1,0 +1,90 @@
+.mainStyle{
+    margin-top:0.5%;
+    margin-bottom:0.5%;
+    display: flex;
+    position: flex;
+    background-color: black;
+    height: 100%;
+    width:100%;
+    border: 1px;
+    border-color:green;
+    border-top:solid;
+    color:green;
+    /* vertical-align: middle; */
+    /* justify-content: center;
+    align-items: center; */
+
+}
+
+.userHomeFrame{
+    float: left;
+    background-color:black; 
+    border-style: solid;
+    border-width:1px;
+    border-color:green;
+    font-family: 'OCR A';
+    font-size:small;
+    color: green;
+    width:80%;
+    height:98%;
+    margin:0.2%;
+    align-content: center;
+}
+.btn-circle.btn-xl {
+    width: 100px;
+    height: 100px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-width: 3px;
+    border-color:green;
+    border-radius: 100px;
+    background-color:black;
+    color:green;
+    font-family: 'OCR A';
+  }
+
+  .registrationTable{
+    position: relative;
+    display: relative;
+    font-family: 'OCR A';
+    font-size:20px;
+    align-self: center;
+    vertical-align: top;
+    align-items: center;
+    padding-top: 3%;
+    height: 400px;
+    width: 400px;
+    margin: 0 auto;
+}
+.thStyle{
+    border-color:green;
+    border-bottom:solid;
+    color:green;
+    font-size: larger;
+    height:50px;
+} 
+
+.regInput{
+    background-color:black; 
+    border-style: solid;
+    border-width:2px;
+    border-color:green;
+    font-family: 'OCR A';
+    font-size:large;
+    color: green;
+    width:100px;
+}
+
+input:focus { 
+    outline: none;
+    border-color:green;
+    box-shadow: 0 0 10px #719ECE;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px black inset;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: green !important;
+}

@@ -1,0 +1,56 @@
+<!-- Start of Main block-->
+
+<div class="mainStyle">
+    <div *ngIf="!ifUserCreated" class="redText">
+            <pre class="redPre">UNABLE CREATE USER</pre>
+            <pre class="redPre">User with login:{{userToSignUp.login}} already exist!</pre>
+        
+            </div>
+            <div *ngIf="!loginCheck" class="redText">
+                <pre class="redPre">Login length shall be less then 25 symbols</pre>
+            
+                </div>
+                <div *ngIf="!passCheck" class="redText">
+                    <pre class="redPre">Password and Re-Password does not match</pre>
+                
+                    </div>
+                    <div *ngIf="!passLength" class="redText">
+                        <pre class="redPre">The minimum password length shall be 6 symbols</pre>
+                    
+                        </div>
+<div class="tableDiv">
+<table class="registrationTable">
+    <tr>
+    <th colspan="2" class="thStyle">Sign Up</th>
+    <th></th>
+    <tr>
+        <tr>
+            <td>Login:</td>
+            <td><input class="regInput"  type="text" name="login" [(ngModel)]='userToSignUp.login' (ngModelChange)="checkLogin()"><td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td><input class="regInput"  type="text" name="userName" [(ngModel)]='userToSignUp.name'><td>
+        </tr>
+        <tr>
+            <td>Surname:</td>
+            <td><input class="regInput"  type="text" name="userSurname" [(ngModel)]='userToSignUp.surname'><td>
+        </tr>
+                <tr>
+                        <td>Password:</td>
+                        <td><input class="regInput"  type="password" name="Password" value="" [(ngModel)]='userToSignUp.password' (ngModelChange)="checkPasswordLength()"><td>
+                    </tr>
+                    <tr>
+                        <td>Re-Password:</td>
+                        <td><input class="regInput"  type="password" name="Password" value="" [(ngModel)]='repassword' (ngModelChange)="checkPasswords()"><td>
+                    </tr>
+                    <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <button type="button" class="regSubmit" (click)='SubmitCreate(userToSignUp)'>Submit</button>&nbsp;
+                                <td>
+                        </tr>
+</table>
+</div>
+</div>

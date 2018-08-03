@@ -1,9 +1,10 @@
 import { Component } from "@angular/core";
 import { NgModel } from "@angular/forms";
 import { Observable } from "rxjs";
-import { userService } from "./user.service";
+import { UserService } from "../user.service";
 import { userModel } from "./userModel";
-import { HttpErrorResponse } from "../../../node_modules/@angular/common/http";
+import { HttpErrorResponse } from "@angular/common/http";
+import { Router } from "../../../node_modules/@angular/router";
 
 
 
@@ -12,11 +13,12 @@ import { HttpErrorResponse } from "../../../node_modules/@angular/common/http";
     styleUrls: ['./signIn.component.css']
 })
 export class SignInComponent{
-    
+
 user:userModel = new userModel();
 isLoginError:boolean = false;
 
-constructor(private uservice: userService){
+constructor(private uservice: UserService, 
+            public router: Router){
 }
 
 Submit(ucred:userModel){
@@ -24,8 +26,8 @@ Submit(ucred:userModel){
     
     this.uservice.userAuth(ucred.Login,ucred.Password).subscribe((data:any)=>{
         sessionStorage.setItem('userToken',data.token);  
-        sessionStorage.setItem('userLogin',ucred.Login);  
-        //router navigate ==> home
+        sessionStorage.setItem('userLogin',(ucred.Login));  
+        this.router.navigate(['about']);
 },
     (err:HttpErrorResponse)=>{
         this.isLoginError=true;

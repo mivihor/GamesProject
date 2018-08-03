@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService } from './AuthService';
+import { AuthService } from './Auth.service';
 import {Router} from '@angular/router'
-import { Alert } from '../../node_modules/@types/selenium-webdriver';
+import { Alert } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-root',

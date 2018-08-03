@@ -22,7 +22,9 @@
     "@angular/router": "^6.0.3",
     "@auth0/angular-jwt": "^2.0.0",
     "angular-jwt": "^0.1.10",
+    "angular-md5": "^0.1.10",
     "core-js": "^2.5.4",
+    "jwt-decode": "^2.2.0",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

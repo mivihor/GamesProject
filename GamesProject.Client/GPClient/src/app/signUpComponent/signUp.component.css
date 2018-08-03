@@ -1,0 +1,89 @@
+.mainStyle{
+    margin-top:0.5%;
+    margin-bottom:0.5%;
+    display: relative;
+    position: relative;
+    background-color: black;
+    height: 100%;
+    width:100%;
+    border: 1px;
+    border-color:green;
+    border-top:solid;
+    color:green;
+    align-content: center;
+
+}
+
+.tableDiv{
+    font-family: 'OCR A';
+    font-size:20px;
+    color:green;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    
+}
+.registrationTable{
+    position: relative;
+    display: relative;
+    font-family: 'OCR A';
+    font-size:20px;
+    align-self: center;
+    vertical-align: top;
+    padding-top: 3%;
+    
+    
+}
+
+.redText{
+    font-family: 'OCR A';
+    font-size:20px;
+    color:red;
+    float: center;
+}
+
+.redPre{
+    text-align: center;
+    align-self: center;
+}
+
+.thStyle{
+    border-color:green;
+    border-bottom:solid;
+    color:green;
+}
+
+.regInput{
+    background-color:black; 
+    border-style: solid;
+    border-width:2px;
+    border-color:green;
+    font-family: 'OCR A';
+    font-size:large;
+    color: green;
+}
+
+input:focus { 
+    outline: none;
+    border-color:green;
+    box-shadow: 0 0 10px #719ECE;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px black inset;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: green !important;
+}
+
+
+.regSubmit{
+    background-color: black; /* Green */
+    border: 2px;
+    border-style: solid;
+    color:green;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}

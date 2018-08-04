@@ -11,7 +11,7 @@ using AutoMapper;
 
 namespace GamesProject.BusinessLogicLayer.Service
 {
-    public class ShellHighScore : IShellHighScore
+    public class ShellHighScore : IShellHighScoreService
     {
         private IUnitOfWork _db { get; set; }
 
@@ -28,19 +28,22 @@ namespace GamesProject.BusinessLogicLayer.Service
             HighScoreShellGame hs = new HighScoreShellGame
             {
                 UserLogin = Login,
-                Score = 100
+                Score = 100,
+                Win = 1
             };
 
             _db.HighScores.Create(hs);
             _db.Save();
         }
 
-        public void UpdateUserScores(string Login, int score)
+        public void UpdateUserScores(string Login, int score, bool win)
         {
             var result = _db.HighScores.Find(userHighScore => userHighScore.UserLogin == Login).SingleOrDefault<HighScoreShellGame>();
             if (result != null)
             {
                 result.Score = score;
+                if (win) result.Win++;
+                else result.Win = 1;
                 _db.HighScores.Update(result);
                 _db.Save();
             }
@@ -55,7 +58,8 @@ namespace GamesProject.BusinessLogicLayer.Service
                 {
                     IdDTM = result.Id,
                     UserLogindDTM = result.UserLogin,
-                    ScoreDTM = result.Score
+                    ScoreDTM = result.Score,
+                    WinDTM = result.Win
                 };
             }
             return null;

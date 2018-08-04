@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GamesProject.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
     [ApiController]
     public class GamesController : Controller
     {
@@ -22,7 +22,7 @@ namespace GamesProject.Controllers
             _shellHS = shellHS;
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPost("api/shell-game")]
         public async Task<IActionResult> ShellGame([FromBody] ShellGameModel userInput)
         {
@@ -35,12 +35,12 @@ namespace GamesProject.Controllers
                     if (checkResult)
                     {
                         _shellGame.win(userInput.Bid, userInput.Login);
-                        return Ok(Json(new {ShellGameResult=true, CurrentScore = _shellHS.getUserScore(userInput.Login) }));
+                        return StatusCode(200,(Json(new {ShellGameResult=true, CurrentScore = _shellHS.getUserScore(userInput.Login).ScoreDTM })));
                     }
                     else
                     {
                         _shellGame.loose(userInput.Bid, userInput.Login);
-                        return Ok(Json(new { ShellGameResult = false, CurrentScore = _shellHS.getUserScore(userInput.Login) }));
+                        return StatusCode(200,(Json(new {ShellGameResult = false, CurrentScore = _shellHS.getUserScore(userInput.Login).ScoreDTM })));
                     }
                 }
                 catch (Exception ex)

@@ -21,6 +21,7 @@ using GamesProject.DataAccessLayer.Interfaces;
 using GamesProject.DataAccessLayer.Repositories;
 using GamesProject.BusinessLogicLayer.Interfaces;
 using GamesProject.BusinessLogicLayer.Service;
+using GamesProject.BusinessLogicLayer.BusinessLogic;
 using Microsoft.AspNetCore.Identity;
 using GamesProject.BusinessLogicLayer.DataTransferModels;
 using System.Text;
@@ -69,6 +70,8 @@ namespace GamesProject
             services.AddScoped<IUnitOfWork, EntityFrameworkUnitOfWork>();
 
             services.AddScoped<IShellHighScoreService, ShellHighScore>();
+
+            services.AddScoped<IShellGame, ShellGame>();
 
             services.AddScoped<IUserService, UserService>();
 

@@ -7,7 +7,7 @@ namespace GamesProject.BusinessLogicLayer.Interfaces
     public interface IShellGame
     {
         int GameRandomize();
-        bool CheckResult(int randRes, int userResul);
+        bool CheckResult(int randResult, int userResult);
         void win(int bid, string login);
         void loose(int bid, string login);
     }

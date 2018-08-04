@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GamesProject.BusinessLogicLayer.Interfaces
 {
-    public interface IShellHighScore
+    public interface IShellHighScoreService
     {
         void CreationScoreSetUp(string Login);
         void UpdateUserScores(string Login, int score);

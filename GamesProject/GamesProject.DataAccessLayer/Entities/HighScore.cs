@@ -9,5 +9,6 @@ namespace GamesProject.DataAccessLayer.Entities
         public int Id { get; set; }
         public string UserLogin { get; set; }
         public int Score { get; set; }
+        public int Win { get; set; }
     }
 }

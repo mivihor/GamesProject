@@ -2,6 +2,7 @@ import { Component, OnChanges } from "@angular/core";
 import { signUpModel } from "./signUpModel";
 import { UserService } from "../user.service";
 import { HttpErrorResponse } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Component({
     templateUrl: './signUp.component.html',
@@ -9,7 +10,8 @@ import { HttpErrorResponse } from "@angular/common/http";
 })
 export class SignUpComponent {
 
-constructor(private userService: UserService){}
+constructor(private userService: UserService,
+            private router:Router){}
 
 userToSignUp:signUpModel = new signUpModel();
 repassword:string;
@@ -37,6 +39,7 @@ SubmitCreate(user:signUpModel){
     if(this.loginCheck == true && this.passCheck == true && this.passLength==true){
         this.userService.userCreation(user).subscribe(data =>{
             this.ifUserCreated=true;
+            this.router.navigate(['signin']);
         },
         (err:HttpErrorResponse)=>{
             this.ifUserCreated=false;

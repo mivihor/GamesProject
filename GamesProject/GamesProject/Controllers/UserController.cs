@@ -19,8 +19,8 @@ namespace GamesProject.Controllers
     {
         private IUserService _userService;
         private IPasswordHasher<UserDTM> _hasher;
-        private IShellHighScore _highScoreService;
-        public UserController(IUserService userService, IPasswordHasher<UserDTM> hasher, IShellHighScore highScoreService)
+        private IShellHighScoreService _highScoreService;
+        public UserController(IUserService userService, IPasswordHasher<UserDTM> hasher, IShellHighScoreService highScoreService)
         {
             _userService = userService;
             _hasher = hasher;

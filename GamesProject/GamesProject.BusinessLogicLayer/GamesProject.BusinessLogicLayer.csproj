@@ -9,8 +9,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="7.0.1" />
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="7.3.0.5690" />
+    <PackageReference Include="AutoMapper" Version="6.2.1" />
+    <PackageReference Include="AutoMapper.Data" Version="1.0.1" />
+    <PackageReference Include="DNTScheduler.Core" Version="1.0.5" />
     <PackageReference Include="Unity" Version="5.8.6" />
   </ItemGroup>
 

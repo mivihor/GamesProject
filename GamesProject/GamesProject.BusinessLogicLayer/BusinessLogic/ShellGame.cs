@@ -33,9 +33,9 @@ namespace GamesProject.BusinessLogicLayer.BusinessLogic
             return rnd.Next(1, 4);
         }
 
-        public void loose(int bid, string login)
+        public  void loose(double bid, string login)
         {
-            int currentScore = _shellHSService.getUserScore(login).ScoreDTM;
+            double currentScore = _shellHSService.getUserScore(login).ScoreDTM;
             if (currentScore >= bid && bid >0)
             {
                 _shellHSService.UpdateUserScores(login, currentScore - bid, false);
@@ -44,9 +44,9 @@ namespace GamesProject.BusinessLogicLayer.BusinessLogic
                 throw new ValidationException("Insufficient bid", "");
         }
 
-        public void win(int bid, string login)
+        public void win(double bid, string login)
         {
-            int currentScore = _shellHSService.getUserScore(login).ScoreDTM;
+            double currentScore = _shellHSService.getUserScore(login).ScoreDTM;
             int winStatus = _shellHSService.getUserScore(login).WinDTM;
             if (currentScore >= bid && bid > 0)
             {

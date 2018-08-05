@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from './Auth.service';
+import { AuthService } from './authorization.service';
 import {Router} from '@angular/router'
 import { Alert } from 'selenium-webdriver';
 

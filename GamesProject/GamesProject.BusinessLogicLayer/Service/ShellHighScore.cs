@@ -25,7 +25,7 @@ namespace GamesProject.BusinessLogicLayer.Service
             if (Login == string.Empty)
                 throw new ValidationException("Login is required", "");
 
-            HighScoreShellGame hs = new HighScoreShellGame
+            HighScore hs = new HighScore
             {
                 UserLogin = Login,
                 Score = 100,
@@ -36,9 +36,9 @@ namespace GamesProject.BusinessLogicLayer.Service
             _db.Save();
         }
 
-        public void UpdateUserScores(string Login, int score, bool win)
+        public void UpdateUserScores(string Login, double score, bool win)
         {
-            var result = _db.HighScores.Find(userHighScore => userHighScore.UserLogin == Login).SingleOrDefault<HighScoreShellGame>();
+            var result = _db.HighScores.Find(userHighScore => userHighScore.UserLogin == Login).SingleOrDefault<HighScore>();
             if (result != null)
             {
                 result.Score = score;
@@ -49,9 +49,18 @@ namespace GamesProject.BusinessLogicLayer.Service
             }
         }
 
+        public void UpdateUserScores(HighScoreDTM userScore, double score)
+        {
+            var result = _db.HighScores.Get(userScore.IdDTM);
+                result.Score = score;
+                result.Win = 1;
+                _db.HighScores.Update(result);
+                _db.Save();
+        }
+
         public HighScoreDTM getUserScore(string Login)
         {
-            var result = _db.HighScores.Find(userHighScore => userHighScore.UserLogin == Login).SingleOrDefault<HighScoreShellGame>();
+            var result = _db.HighScores.Find(userHighScore => userHighScore.UserLogin == Login).SingleOrDefault<HighScore>();
             if (result != null)
             {
                 return new HighScoreDTM
@@ -65,10 +74,25 @@ namespace GamesProject.BusinessLogicLayer.Service
             return null;
         }
 
-        public List<HighScoreDTM> getHighScores()
+        public IEnumerable<HighScoreDTM> getHighScores()
         {
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<HighScoreShellGame, HighScoreDTM>()).CreateMapper();
-            return mapper.Map<IEnumerable<HighScoreShellGame>, List<HighScoreDTM>>(_db.HighScores.GetAll());
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<HighScore, HighScoreDTM>()
+            .ForMember(dest => dest.IdDTM, source => source.MapFrom(m => m.Id))
+            .ForMember(dest => dest.UserLogindDTM, source => source.MapFrom(m => m.UserLogin))
+            .ForMember(dest => dest.ScoreDTM, source => source.MapFrom(m => m.Score))
+            .ForMember(dest => dest.WinDTM, source => source.MapFrom(m => m.Win))
+            ).CreateMapper();
+            return mapper.Map<IEnumerable<HighScore>, List<HighScoreDTM>>(_db.HighScores.GetAll());
+        }
+        public IEnumerable<HighScoreDTM> getZeroScores()
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<HighScore, HighScoreDTM>()
+            .ForMember(dest => dest.IdDTM, source => source.MapFrom(m => m.Id))
+            .ForMember(dest => dest.UserLogindDTM, source => source.MapFrom(m => m.UserLogin))
+            .ForMember(dest => dest.ScoreDTM, source => source.MapFrom(m => m.Score))
+            .ForMember(dest => dest.WinDTM, source => source.MapFrom(m => m.Win))
+            ).CreateMapper();
+            return mapper.Map<List<HighScoreDTM>>(_db.HighScores.Find(hs => hs.Score == 0));
         }
 
         public void Dispose()

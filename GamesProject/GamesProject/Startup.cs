@@ -25,6 +25,7 @@ using GamesProject.BusinessLogicLayer.BusinessLogic;
 using Microsoft.AspNetCore.Identity;
 using GamesProject.BusinessLogicLayer.DataTransferModels;
 using System.Text;
+using DNTScheduler.Core;
 
 namespace GamesProject
 {
@@ -60,6 +61,19 @@ namespace GamesProject
                 });
 
 
+            services.AddDNTScheduler(options =>
+            {
+                // DNTScheduler needs a ping service to keep it alive. Set it to false if you don't need it.
+                options.AddPingTask = true;
+
+                options.AddScheduledTask<UpdateZeroScore>(
+                    runAt: utcNow =>
+                    {
+                        var now = utcNow.AddHours(3);
+                        return now.Hour%2 == 0 && now.Minute == 0  && now.Second == 0;
+                    },
+                    order: 2);
+            });
 
             services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
 
@@ -85,6 +99,7 @@ namespace GamesProject
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseAuthentication();
+            app.UseDNTScheduler();
             app.UseStatusCodePages();
             app.UseCors(builder =>  builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod());
             app.UseDefaultFiles();

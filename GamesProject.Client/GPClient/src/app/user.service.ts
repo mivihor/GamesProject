@@ -14,6 +14,7 @@ const httpOptions = {
 export class UserService{
     authUrl:string = 'https://localhost:44300/api/auth';
     creationUrl:string = 'https://localhost:44300/api/create';
+    userScoreUrl:string = 'https://localhost:44300/api/user-score';
 
     constructor(private http: HttpClient){}
 
@@ -25,5 +26,10 @@ export class UserService{
     userCreation(userCreation : signUpModel){
         const bodyCreation = {"NameUCM":userCreation.name, "SurnameUCM":userCreation.surname, "LoginUCM":userCreation.login, "PasswordUCM":userCreation.password};
         return this.http.post(this.creationUrl,bodyCreation);
+    }
+
+    getUserScore(login:string){
+        const userLogin = {"userLogin":login};
+        return this.http.post(this.userScoreUrl, userLogin);
     }
 }

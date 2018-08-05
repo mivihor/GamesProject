@@ -30,7 +30,7 @@ namespace GamesProject.DataAccessLayer.Repositories
             }
         }
 
-        public IRepository<HighScoreShellGame> HighScores
+        public IRepository<HighScore> HighScores
         {
             get
             {

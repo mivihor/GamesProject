@@ -33,7 +33,7 @@ namespace GamesProject.Utils
             var token = new JwtSecurityToken(_config["AuthOption:Issuer"],
                 _config["AuthOption:Audience"],
                 claims,
-                expires: DateTime.Now.AddMinutes(15),
+                expires: DateTime.Now.AddMinutes(45),
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);

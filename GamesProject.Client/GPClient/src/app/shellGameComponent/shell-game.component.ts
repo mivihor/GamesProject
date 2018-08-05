@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { UserService } from "../user.service";
 
 @Component({
     templateUrl: './shell-game.component.html',
@@ -6,4 +7,12 @@ import { Component } from "@angular/core";
 })
 export class ShellGameComponent{
 
+    userResult: number;
+    userBid: number;
+    userLogin:string = sessionStorage.getItem('userLogin');
+    Score: number;
+    debugger;
+    constructor() {}
+
+    
 }

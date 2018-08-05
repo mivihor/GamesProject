@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import { UserService } from "../user.service";
 import { userModel } from "./userModel";
 import { HttpErrorResponse } from "@angular/common/http";
-import { Router } from "../../../node_modules/@angular/router";
+import { Router } from "@angular/router";
 
 
 

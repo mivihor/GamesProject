@@ -8,9 +8,11 @@ namespace GamesProject.BusinessLogicLayer.Interfaces
     public interface IShellHighScoreService
     {
         void CreationScoreSetUp(string Login);
-        void UpdateUserScores(string Login, int score, bool win);
+        void UpdateUserScores(string Login, double score, bool win);
+        void UpdateUserScores(HighScoreDTM userScore, double score);
         HighScoreDTM getUserScore(string Login);
-        List<HighScoreDTM> getHighScores();
+        IEnumerable<HighScoreDTM> getHighScores();
+        IEnumerable<HighScoreDTM> getZeroScores();
         void Dispose();
     }
 }

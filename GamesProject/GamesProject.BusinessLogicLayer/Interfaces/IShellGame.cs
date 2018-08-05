@@ -8,7 +8,7 @@ namespace GamesProject.BusinessLogicLayer.Interfaces
     {
         int GameRandomize();
         bool CheckResult(int randResult, int userResult);
-        void win(int bid, string login);
-        void loose(int bid, string login);
+        void win(double bid, string login);
+        void loose(double bid, string login);
     }
 }

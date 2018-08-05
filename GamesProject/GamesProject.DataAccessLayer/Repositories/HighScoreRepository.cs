@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace GamesProject.DataAccessLayer.Repositories
 {
-    class HighScoreShellGameRepository:IRepository<HighScoreShellGame>
+    class HighScoreShellGameRepository:IRepository<HighScore>
     {
         private DataContext db;
 
@@ -18,34 +18,34 @@ namespace GamesProject.DataAccessLayer.Repositories
             this.db = context;
         }
 
-        public IEnumerable<HighScoreShellGame> GetAll()
+        public IEnumerable<HighScore> GetAll()
         {
-            return db.HScoresShellGame;
+            return db.HScoresShellGame.ToList();
         }
 
-        public HighScoreShellGame Get(int id)
+        public HighScore Get(int id)
         {
             return db.HScoresShellGame.Find(id);
         }
 
-        public void Create(HighScoreShellGame highScore)
+        public void Create(HighScore highScore)
         {
             db.HScoresShellGame.Add(highScore);
         }
 
-        public void Update(HighScoreShellGame highScore)
+        public void Update(HighScore highScore)
         {
             db.Entry(highScore).State = EntityState.Modified;
         }
 
-        public IEnumerable<HighScoreShellGame> Find(Func<HighScoreShellGame, Boolean> predicate)
+        public IEnumerable<HighScore> Find(Func<HighScore, Boolean> predicate)
         {
             return db.HScoresShellGame.Where(predicate).ToList();
         }
 
         public void Delete(int id)
         {
-            HighScoreShellGame highScore = db.HScoresShellGame.Find(id);
+            HighScore highScore = db.HScoresShellGame.Find(id);
             if (highScore != null)
                 db.HScoresShellGame.Remove(highScore);
         }

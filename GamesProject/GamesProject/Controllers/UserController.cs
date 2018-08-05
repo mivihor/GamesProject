@@ -44,7 +44,7 @@ namespace GamesProject.Controllers
 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Something goes wrong!");
+                    throw new Exception(ex.Message);
                 }
             }
             return BadRequest("Model is not valid ");

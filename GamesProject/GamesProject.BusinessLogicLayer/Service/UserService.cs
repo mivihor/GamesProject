@@ -57,7 +57,14 @@ namespace GamesProject.BusinessLogicLayer.Service
 
         public IEnumerable<UserDTM> GetUsers()
         {
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDTM>()).CreateMapper();
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDTM>()
+            .ForMember(dest => dest.IdDTM, source => source.MapFrom(m => m.Id))
+            .ForMember(dest => dest.LoginDTM, source => source.MapFrom(m => m.Login))
+            .ForMember(dest => dest.NameDTM, source => source.MapFrom(m => m.Name))
+            .ForMember(dest => dest.SurnameDTM, source => source.MapFrom(m => m.Surname))
+            .ForMember(dest => dest.PasswordDTM, source => source.MapFrom(m => m.Password))
+            .ForMember(dest => dest.RoleDTM, source => source.MapFrom(m => m.Role))
+            ).CreateMapper();
             return mapper.Map<IEnumerable<User>, List<UserDTM>>(_DataBase.Users.GetAll());
         }
 

@@ -8,7 +8,7 @@ namespace GamesProject.DataAccessLayer.Interfaces
     public interface IUnitOfWork:IDisposable
     {
         IRepository<User> Users { get; }
-        IRepository<HighScoreShellGame> HighScores { get; }
+        IRepository<HighScore> HighScores { get; }
         void Save();
     }
 }

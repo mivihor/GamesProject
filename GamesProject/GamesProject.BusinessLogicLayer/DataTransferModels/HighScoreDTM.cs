@@ -8,7 +8,7 @@ namespace GamesProject.BusinessLogicLayer.DataTransferModels
     {
         public int IdDTM { get; set; }
         public string UserLogindDTM { get; set; }
-        public int ScoreDTM { get; set; }
+        public double ScoreDTM { get; set; }
         public int WinDTM { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 
@@ -10,7 +10,10 @@ import { SignInComponent } from './signInComponent/signIn.component';
 import { AboutComponent } from './aboutComponent/about.component';
 import { SignUpComponent } from './signUpComponent/signUp.component';
 import { ShellGameComponent } from './shellGameComponent/shell-game.component';
-
+import {AuthGuardService} from './auth-guard.service'
+import { ShellGameChildComponent } from './shellGameComponent/shell-game.child.component';
+import { JwtInterceptor } from './JwtInterceptor.service';
+ 
 
 
 @NgModule({
@@ -19,7 +22,8 @@ import { ShellGameComponent } from './shellGameComponent/shell-game.component';
     SignInComponent,
     AboutComponent,
     SignUpComponent,
-    ShellGameComponent
+    ShellGameComponent,
+    ShellGameChildComponent
   ],
   imports: [
     BrowserModule,
@@ -38,12 +42,14 @@ import { ShellGameComponent } from './shellGameComponent/shell-game.component';
       {path:'about', component: AboutComponent},
       {path:'signin', component: SignInComponent},
       {path:'signup', component: SignUpComponent},
-      {path:'shell-game', component: ShellGameComponent},
+      {path:'shell-game',
+       canActivate: [AuthGuardService],
+       component: ShellGameComponent},
       {path: '', redirectTo: 'about', pathMatch: 'full'},
       {path: '**', redirectTo: 'about', pathMatch: 'full'}
     ])
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

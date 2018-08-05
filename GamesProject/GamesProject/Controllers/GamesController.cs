@@ -14,15 +14,15 @@ namespace GamesProject.Controllers
     [ApiController]
     public class GamesController : Controller
     {
-        public IShellGame _shellGame { get; set; }
-        public IShellHighScoreService _shellHS;
+        private IShellGame _shellGame;
+        private IShellHighScoreService _shellHS;
         public GamesController(IShellGame shellGame, IShellHighScoreService shellHS)
         {
             _shellGame = shellGame;
             _shellHS = shellHS;
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost("api/shell-game")]
         public async Task<IActionResult> ShellGame([FromBody] ShellGameModel userInput)
         {
@@ -35,12 +35,12 @@ namespace GamesProject.Controllers
                     if (checkResult)
                     {
                         _shellGame.win(userInput.Bid, userInput.Login);
-                        return StatusCode(200,(Json(new {ShellGameResult=true, CurrentScore = _shellHS.getUserScore(userInput.Login).ScoreDTM })));
+                        return StatusCode(200,new {ShellGameResult=true, CurrentScore = _shellHS.getUserScore(userInput.Login).ScoreDTM });
                     }
                     else
                     {
                         _shellGame.loose(userInput.Bid, userInput.Login);
-                        return StatusCode(200,(Json(new {ShellGameResult = false, CurrentScore = _shellHS.getUserScore(userInput.Login).ScoreDTM })));
+                        return StatusCode(200,new {ShellGameResult = false, CurrentScore = _shellHS.getUserScore(userInput.Login).ScoreDTM });
                     }
                 }
                 catch (Exception ex)

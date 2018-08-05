@@ -6,14 +6,10 @@
     background-color: black;
     height: 100%;
     width:100%;
-    border: 1px;
+    /* border: 1px;
     border-color:green;
-    border-top:solid;
+    border-top:solid; */
     color:green;
-    /* vertical-align: middle; */
-    /* justify-content: center;
-    align-items: center; */
-
 }
 
 .userHomeFrame{
@@ -29,6 +25,7 @@
     height:98%;
     margin:0.2%;
     align-content: center;
+    overflow: hidden;
 }
 .btn-circle.btn-xl {
     width: 100px;

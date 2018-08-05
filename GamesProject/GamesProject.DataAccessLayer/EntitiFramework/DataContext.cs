@@ -17,7 +17,7 @@ namespace GamesProject.DataAccessLayer.EntitiFramework
            
         }
         public DbSet<User> Users { get; set; }
-        public DbSet<HighScoreShellGame> HScoresShellGame { get; set; }
+        public DbSet<HighScore> HScoresShellGame { get; set; }
 
     }
 }

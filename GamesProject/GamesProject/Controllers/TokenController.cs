@@ -46,7 +46,7 @@ namespace GamesProject.Controllers
                     }
                 }
                 return response;
-            }catch(Exception ex)
+            }catch(Exception)
             {
                 throw new Exception("Failed to create Token");
             }

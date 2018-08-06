@@ -13,19 +13,33 @@
             </tr> -->
             <tr>
                 <td>
-                    <button type="button" value="1" class="btn btn-default btn-circle btn-xl">SHELL 1</button>
+                    <button type="button" value="1" [disabled]="Gamer.Bid == null" class="btn btn-default btn-circle btn-xl" (click)='play(Gamer.userResult = 1)'>SHELL 1</button>
                     </td>
                 <td>
-                    <button type="button" value="2" class="btn btn-default btn-circle btn-xl">SHELL 2</button>
+                    <button type="button" value="2" [disabled]="Gamer.Bid == null" class="btn btn-default btn-circle btn-xl" (click)='play(Gamer.userResult = 2)'>SHELL 2</button>
                 </td>
                 <td>
-                    <button type="button" value="3" class="btn btn-default btn-circle btn-xl">SHELL 3</button>
+                    <button type="button" value="3" [disabled]="Gamer.Bid == null" class="btn btn-default btn-circle btn-xl" (click)='play(Gamer.userResult = 3)'>SHELL 3</button>
                 </td>
             </tr>
+
+
+
+            <tr *ngIf='!checkInput() && Gamer.Bid!=null'>
+                <td></td>
+                <td colspan="3" style="color:red;">Invalid input</td>
+                <td></td>
+            </tr>
+
+
+
+
+
+
             <tr>
                 <td colspan="2" style="height:50px">Please make your bid:</td>
                 <td>
-                        <input class="regInput"  type="text" name="Login" >
+                        <input class="regInput"  type="text" name="bid" [(ngModel)]='Gamer.Bid' (ngModelChange)="checkInput()">
                 </td>
                 <td>
                     
@@ -33,5 +47,5 @@
             </tr>
         </table>
     </div>
-    <shell-child [(userScore)]="Score"></shell-child>
+    <shell-child (onChange)="onChange($event)" [userScore]="GamerRes.CurrentScore"></shell-child>
 </div>

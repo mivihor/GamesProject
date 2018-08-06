@@ -50,7 +50,7 @@ namespace GamesProject.BusinessLogicLayer.BusinessLogic
             int winStatus = _shellHSService.getUserScore(login).WinDTM;
             if (currentScore >= bid && bid > 0)
             {
-                _shellHSService.UpdateUserScores(login, (currentScore+(bid*bid*winStatus)), true);
+                _shellHSService.UpdateUserScores(login, (currentScore+(bid*2*winStatus)), true);
             }
             else
                 throw new ValidationException("Insufficient bid", "");

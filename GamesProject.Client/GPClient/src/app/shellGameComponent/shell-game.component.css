@@ -41,6 +41,14 @@
     font-family: 'OCR A';
   }
 
+  button:disabled {
+    border-color:grey;
+    border-radius: 100px;
+    border-width: 3px;
+    color:green;
+    background-color:black;
+}
+
   .registrationTable{
     position: relative;
     display: relative;
@@ -85,3 +93,5 @@ input:-webkit-autofill {
 input:-webkit-autofill {
     -webkit-text-fill-color: green !important;
 }
+
+

@@ -38,8 +38,8 @@ namespace GamesProject.Controllers
                     UserDTM user = await normalization.Normalize(userCM);
                     if (_userService.ifUserExist(user))
                         return StatusCode(406, $"User with login {user.LoginDTM} already exist");
-                    _userService.CreateUser(user);
-                    _highScoreService.CreationScoreSetUp(user.LoginDTM);
+                    await _userService.CreateUser(user);
+                    await _highScoreService.CreationScoreSetUp(user.LoginDTM);
                     return StatusCode(201);
 }
                 catch (Exception ex)

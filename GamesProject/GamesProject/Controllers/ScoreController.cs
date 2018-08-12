@@ -28,7 +28,7 @@ namespace GamesProject.Controllers
             {
                 try
                 {
-                    var userScore = _shellHS.getUserScore(scoreModel.userLogin);
+                    var userScore = await _shellHS.getUserScore(scoreModel.userLogin);
                     if(userScore is null)
                     {
                         return StatusCode(404);

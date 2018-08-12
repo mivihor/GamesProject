@@ -8,6 +8,7 @@ using System.Text;
 using GamesProject.DataAccessLayer.Entities;
 using System.Linq;
 using AutoMapper;
+using System.Threading.Tasks;
 
 namespace GamesProject.BusinessLogicLayer.Service
 {
@@ -20,7 +21,9 @@ namespace GamesProject.BusinessLogicLayer.Service
             _db = db;
         }
 
-        public void CreationScoreSetUp(string Login)
+        public async Task CreationScoreSetUp(string Login)
+        {
+            await Task.Run(() =>
         {
             if (Login == string.Empty)
                 throw new ValidationException("Login is required", "");
@@ -34,6 +37,7 @@ namespace GamesProject.BusinessLogicLayer.Service
 
             _db.HighScores.Create(hs);
             _db.Save();
+        });
         }
 
         public void UpdateUserScores(string Login, double score, bool win)
@@ -58,20 +62,23 @@ namespace GamesProject.BusinessLogicLayer.Service
                 _db.Save();
         }
 
-        public HighScoreDTM getUserScore(string Login)
+        public async Task<HighScoreDTM> getUserScore(string Login)
         {
-            var result = _db.HighScores.Find(userHighScore => userHighScore.UserLogin == Login).SingleOrDefault<HighScore>();
-            if (result != null)
+            return await Task.Run(() =>
             {
-                return new HighScoreDTM
+                var result = _db.HighScores.Find(userHighScore => userHighScore.UserLogin == Login).SingleOrDefault<HighScore>();
+                if (result != null)
                 {
-                    IdDTM = result.Id,
-                    UserLogindDTM = result.UserLogin,
-                    ScoreDTM = result.Score,
-                    WinDTM = result.Win
-                };
-            }
-            return null;
+                    return new HighScoreDTM
+                    {
+                        IdDTM = result.Id,
+                        UserLogindDTM = result.UserLogin,
+                        ScoreDTM = result.Score,
+                        WinDTM = result.Win
+                    };
+                }
+                return null;
+            });
         }
 
         public IEnumerable<HighScoreDTM> getHighScores()

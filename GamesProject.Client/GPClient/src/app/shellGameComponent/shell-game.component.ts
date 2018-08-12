@@ -14,7 +14,6 @@ export class ShellGameComponent{
     Gamer:ShellGameClientModel = new ShellGameClientModel();
     GamerRes:ShellGameServerModel = new ShellGameServerModel();
     playerScore:number;
-    Messenger:string;
 
     constructor(private userService: UserService) {}
     

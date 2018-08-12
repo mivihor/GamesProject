@@ -31,16 +31,16 @@ namespace GamesProject.Controllers
                 try
                 {
                     int randResult = _shellGame.GameRandomize();
-                    bool checkResult = _shellGame.CheckResult(randResult, userInput.userResult);
+                    bool checkResult = await _shellGame.CheckResult(randResult, userInput.userResult);
                     if (checkResult)
                     {
-                        _shellGame.win(userInput.Bid, userInput.Login);
-                        return StatusCode(200,new {ShellGameResult=true, CurrentScore = _shellHS.getUserScore(userInput.Login).ScoreDTM });
+                       await _shellGame.win(userInput.Bid, userInput.Login);
+                        return StatusCode(200,new {ShellGameResult=true, CurrentScore = _shellHS.getUserScore(userInput.Login).Result.ScoreDTM, WinShell = randResult });
                     }
                     else
                     {
-                        _shellGame.loose(userInput.Bid, userInput.Login);
-                        return StatusCode(200,new {ShellGameResult = false, CurrentScore = _shellHS.getUserScore(userInput.Login).ScoreDTM });
+                        await _shellGame.loose(userInput.Bid, userInput.Login);
+                        return StatusCode(200,new {ShellGameResult = false, CurrentScore = _shellHS.getUserScore(userInput.Login).Result.ScoreDTM, WinShell = randResult });
                     }
                 }
                 catch (Exception ex)

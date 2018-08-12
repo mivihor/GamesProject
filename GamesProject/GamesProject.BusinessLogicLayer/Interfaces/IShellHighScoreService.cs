@@ -2,15 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace GamesProject.BusinessLogicLayer.Interfaces
 {
     public interface IShellHighScoreService
     {
-        void CreationScoreSetUp(string Login);
+        Task CreationScoreSetUp(string Login);
         void UpdateUserScores(string Login, double score, bool win);
         void UpdateUserScores(HighScoreDTM userScore, double score);
-        HighScoreDTM getUserScore(string Login);
+        Task<HighScoreDTM> getUserScore(string Login);
         IEnumerable<HighScoreDTM> getHighScores();
         IEnumerable<HighScoreDTM> getZeroScores();
         void Dispose();

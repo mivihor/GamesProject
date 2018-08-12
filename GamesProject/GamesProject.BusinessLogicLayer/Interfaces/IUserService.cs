@@ -9,7 +9,7 @@ namespace GamesProject.BusinessLogicLayer.Interfaces
     public interface IUserService
     {
         bool ifUserExist(UserDTM userDTM);
-        void CreateUser(UserDTM userDTM);
+        Task CreateUser(UserDTM userDTM);
         Task<UserDTM> GetUserByLogin(string login);
         UserDTM GetUser(int? id);
         IEnumerable<UserDTM> GetUsers();

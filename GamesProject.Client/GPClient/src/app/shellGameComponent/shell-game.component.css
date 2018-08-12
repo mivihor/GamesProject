@@ -27,27 +27,55 @@
     align-content: center;
     overflow: hidden;
 }
-.btn-circle.btn-xl {
+.buttonMy {
     width: 100px;
     height: 100px;
     padding: 10px 16px;
     font-size: 24px;
-    line-height: 1.33;
-    border-width: 3px;
+    line-height: 1.50;
+    border-width: 2px;
     border-color:green;
-    border-radius: 100px;
+    border-radius: 50%;
     background-color:black;
     color:green;
     font-family: 'OCR A';
+    -webkit-transition-duration: 1.4s; /* Safari */
+    transition-duration: 1.4s;
+    overflow: hidden;
+    cursor: pointer;
   }
 
-  button:disabled {
-    border-color:grey;
-    border-radius: 100px;
-    border-width: 3px;
-    color:green;
-    background-color:black;
+  .button:after {
+    content: "";
+    background: black;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
 }
+.button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+
+  button:hover {
+    width:105px;
+    height: 105px;
+    align-content: center;
+  }
+  
+  button:disabled,
+  button[disabled]{
+    border-style: solid;
+    border-color:rgb(46, 68, 46);
+    color:rgb(114, 168, 114);
+  }
 
   .registrationTable{
     position: relative;

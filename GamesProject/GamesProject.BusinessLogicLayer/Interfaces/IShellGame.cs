@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace GamesProject.BusinessLogicLayer.Interfaces
 {
     public interface IShellGame
     {
         int GameRandomize();
-        bool CheckResult(int randResult, int userResult);
-        void win(double bid, string login);
-        void loose(double bid, string login);
+        Task<bool> CheckResult(int randResult, int userResult);
+        Task win(double bid, string login);
+        Task loose(double bid, string login);
     }
 }

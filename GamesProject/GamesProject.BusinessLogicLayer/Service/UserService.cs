@@ -37,7 +37,9 @@ namespace GamesProject.BusinessLogicLayer.Service
                 return true;
         }
 
-        public async void CreateUser(UserDTM userDTM)
+        public async Task  CreateUser(UserDTM userDTM)
+        {
+            await Task.Run(() =>
         {
             if (userDTM == null)
                 throw new ValidationException("User is null", "");
@@ -53,6 +55,7 @@ namespace GamesProject.BusinessLogicLayer.Service
 
             _DataBase.Users.Create(user);
             _DataBase.Save();
+        });
         }
 
         public IEnumerable<UserDTM> GetUsers()

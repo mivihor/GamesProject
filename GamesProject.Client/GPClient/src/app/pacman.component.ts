@@ -5,7 +5,7 @@ import {Component} from "@angular/core";
     <div class="aboutSemanticHeader"><h1>Pac-Man</h1></div>
     <table class="registrationTable">
         <tr>
-            <td colspan="3"class="tdStyle">Ops! This game is under development</td>
+            <td colspan="3"class="tdStyle">Oops! This game is under development</td>
         </tr>
         
     </table>

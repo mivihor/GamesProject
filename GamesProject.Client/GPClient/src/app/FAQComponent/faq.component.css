@@ -1,0 +1,48 @@
+.mainStyle{
+    margin-top:0.5%;
+    margin-bottom:0.5%;
+    display: static;
+    position: relative;
+    background-color: black;
+    height: 100%;
+    width:100%;
+    border: 1px;
+    border-color:green;
+    border-top:solid;
+    color:green;
+    
+    justify-content: center;
+    /* align-items: center; */
+
+}
+h1{
+    text-align: center;
+    font-family: 'OCR A';
+}
+
+.aboutSemanticHeader{  
+    position: relative;
+    background-color: black;
+    border: 1px;
+    border-color:green;
+    border-bottom:solid;
+    color:green;
+    font-family: 'OCR A';
+    width:100%;
+    text-align: center;
+    margin-top:0.5%;
+    margin-bottom:0.5%;
+}
+
+.aboutSemantic{  
+    background-color: black;
+    color:green;
+    font-family: 'OCR A';
+    width:60%;
+    align-self: center;
+    text-justify: auto;
+    font-size:large;   
+    margin-left: 20%;
+    margin-right:20%;
+    margin-top: 5%;
+}

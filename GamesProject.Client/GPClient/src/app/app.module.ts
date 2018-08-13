@@ -16,6 +16,7 @@ import { JwtInterceptor } from './JwtInterceptor.service';
 import { hsComponent } from './HS/hs.component';
 import { GameListComponent } from './gameListComponent/gameList.component';
 import { PacManComponent } from './pacman.component';
+import { FAQComponent } from './FAQComponent/faq.component';
  
 
 
@@ -29,7 +30,8 @@ import { PacManComponent } from './pacman.component';
     ShellGameChildComponent,
     hsComponent,
     GameListComponent,
-    PacManComponent
+    PacManComponent,
+    FAQComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +51,7 @@ import { PacManComponent } from './pacman.component';
       {path:'signin', component: SignInComponent},
       {path:'signup', component: SignUpComponent},
       {path:'gamelist', component: GameListComponent},
+      {path:'faq', component: FAQComponent},
       {path:'shell-game',
        canActivate: [AuthGuardService],
        component: ShellGameComponent},

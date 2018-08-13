@@ -26,6 +26,7 @@ signOut():void{
 ngOnInit(){
   this.isLogged.loggedEvent.subscribe((logged:boolean)=>{
     this.authchek=logged;
+    if(this.authchek) this.userLogin=sessionStorage.getItem('userLogin');
   })
 }
 

@@ -11,5 +11,6 @@ namespace GamesProject.BusinessLogicLayer.Interfaces
         Task<bool> CheckResult(int randResult, int userResult);
         Task win(double bid, string login);
         Task loose(double bid, string login);
+        Task<double> winScore(double bid, string login);
     }
 }

@@ -13,6 +13,9 @@ import { ShellGameComponent } from './shellGameComponent/shell-game.component';
 import {AuthGuardService} from './auth-guard.service'
 import { ShellGameChildComponent } from './shellGameComponent/shell-game.child.component';
 import { JwtInterceptor } from './JwtInterceptor.service';
+import { hsComponent } from './HS/hs.component';
+import { GameListComponent } from './gameListComponent/gameList.component';
+import { PacManComponent } from './pacman.component';
  
 
 
@@ -23,7 +26,10 @@ import { JwtInterceptor } from './JwtInterceptor.service';
     AboutComponent,
     SignUpComponent,
     ShellGameComponent,
-    ShellGameChildComponent
+    ShellGameChildComponent,
+    hsComponent,
+    GameListComponent,
+    PacManComponent
   ],
   imports: [
     BrowserModule,
@@ -42,9 +48,16 @@ import { JwtInterceptor } from './JwtInterceptor.service';
       {path:'about', component: AboutComponent},
       {path:'signin', component: SignInComponent},
       {path:'signup', component: SignUpComponent},
+      {path:'gamelist', component: GameListComponent},
       {path:'shell-game',
        canActivate: [AuthGuardService],
        component: ShellGameComponent},
+       {path:'pacman',
+       canActivate: [AuthGuardService],
+       component: PacManComponent},
+       {path:'hs',
+       canActivate: [AuthGuardService],
+       component: hsComponent},
       {path: '', redirectTo: 'about', pathMatch: 'full'},
       {path: '**', redirectTo: 'about', pathMatch: 'full'}
     ])

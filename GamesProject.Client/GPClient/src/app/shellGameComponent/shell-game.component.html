@@ -30,10 +30,7 @@
                 <td colspan="3" style="color:red;">Invalid input</td>
                 <td></td>
             </tr>
-
-
-
-
+            
 
 
             <tr>
@@ -45,7 +42,15 @@
                     
                 </td>
             </tr>
+            <tr>
+                <td colspan="3" style="text-align: center;" *ngIf="GamerRes.GameResult">
+                    {{winMessage}}
+                </td>
+                <td colspan="3" *ngIf="!GamerRes.GameResult" style="color:red; text-align: center;">
+                        {{looseMeassage}}
+                    </td>
+            </tr>
         </table>
     </div>
-    <shell-child (onChange)="onChange($event)" [userScore]="GamerRes.CurrentScore"></shell-child>
+    <shell-child (onChange)="onChange($event)" [userScore]="GamerRes.CurrentScore" [gameLog]="log"></shell-child>
 </div>

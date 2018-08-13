@@ -69,5 +69,15 @@ namespace GamesProject.BusinessLogicLayer.BusinessLogic
             });
         }
 
+        public async Task<double> winScore(double bid, string login)
+        {
+            return await Task.Run(() =>
+            {
+                int winStatus = _shellHSService.getUserScore(login).Result.WinDTM;
+                return bid * 2 * winStatus;
+            });
+        }
+
+
     }
 }

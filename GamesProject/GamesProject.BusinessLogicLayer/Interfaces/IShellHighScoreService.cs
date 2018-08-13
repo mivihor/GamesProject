@@ -12,7 +12,7 @@ namespace GamesProject.BusinessLogicLayer.Interfaces
         void UpdateUserScores(string Login, double score, bool win);
         void UpdateUserScores(HighScoreDTM userScore, double score);
         Task<HighScoreDTM> getUserScore(string Login);
-        IEnumerable<HighScoreDTM> getHighScores();
+        Task<IEnumerable<HighScoreDTM>> getHighScores();
         IEnumerable<HighScoreDTM> getZeroScores();
         void Dispose();
     }

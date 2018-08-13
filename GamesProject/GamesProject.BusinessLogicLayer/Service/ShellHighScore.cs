@@ -81,7 +81,9 @@ namespace GamesProject.BusinessLogicLayer.Service
             });
         }
 
-        public IEnumerable<HighScoreDTM> getHighScores()
+        public async Task<IEnumerable<HighScoreDTM>> getHighScores()
+        {
+            return await Task.Run(() =>
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<HighScore, HighScoreDTM>()
             .ForMember(dest => dest.IdDTM, source => source.MapFrom(m => m.Id))
@@ -90,7 +92,9 @@ namespace GamesProject.BusinessLogicLayer.Service
             .ForMember(dest => dest.WinDTM, source => source.MapFrom(m => m.Win))
             ).CreateMapper();
             return mapper.Map<IEnumerable<HighScore>, List<HighScoreDTM>>(_db.HighScores.GetAll());
+        });
         }
+
         public IEnumerable<HighScoreDTM> getZeroScores()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<HighScore, HighScoreDTM>()

@@ -1,0 +1,17 @@
+<!-- Start of Main block-->
+<div class="mainStyle">
+    <div class="aboutSemanticHeader"><h1>High Scores</h1></div>
+    <table class="registrationTable">
+        <tr>
+            <th class="thStyle">ID</th>
+            <th class="thStyle">LOGIN</th>
+            <th class="thStyle">SCORE</th>
+        </tr>
+        <tr *ngFor="let hs of highscores">
+            <td class="tdStyle">{{hs.id}}</td>
+            <td class="tdStyle">{{hs.login}}</td>
+            <td class="tdStyle">{{hs.score}}</td>
+        </tr>
+    </table>
+</div>
+<!--End of Main block-->

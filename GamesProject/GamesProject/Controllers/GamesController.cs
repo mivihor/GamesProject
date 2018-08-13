@@ -34,8 +34,9 @@ namespace GamesProject.Controllers
                     bool checkResult = await _shellGame.CheckResult(randResult, userInput.userResult);
                     if (checkResult)
                     {
+                        double winAmount = await _shellGame.winScore(userInput.Bid, userInput.Login);
                        await _shellGame.win(userInput.Bid, userInput.Login);
-                        return StatusCode(200,new {ShellGameResult=true, CurrentScore = _shellHS.getUserScore(userInput.Login).Result.ScoreDTM, WinShell = randResult });
+                        return StatusCode(200,new {ShellGameResult=true, CurrentScore = _shellHS.getUserScore(userInput.Login).Result.ScoreDTM, WinShell = randResult, WinAmount = winAmount });
                     }
                     else
                     {
